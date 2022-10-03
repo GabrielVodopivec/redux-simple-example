@@ -1,13 +1,16 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../app/actions";
+import { v4 as uuidv4 } from 'uuid';
 
 export const Footer = () => {
   const [text, setText] = useState("");
+  
   const dispatch = useDispatch();
 
   const handleAddTask = () => {
-    dispatch(addTask(text));
+    let id = uuidv4();
+    dispatch(addTask(text, id));
     setText("");
   };
 
@@ -16,7 +19,7 @@ export const Footer = () => {
   };
 
   const handleKeyDown = (e) => {
-    if (e.code === "Enter") {
+    if (e.code === "Enter" || e.code === "NumpadEnter") {
       handleAddTask();
     }
   };
