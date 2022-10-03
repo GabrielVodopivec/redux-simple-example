@@ -1,8 +1,9 @@
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSelection } from "../app/actions";
+import { todosSelector } from "../app/selectors";
 
 export const TodoList = () => {
-  const todos = useSelector((state) => state.todos);
+  const todos = useSelector(todosSelector);
   const dispatch = useDispatch();
 
   const handleToggleSelection = (index) => () => {
@@ -10,26 +11,24 @@ export const TodoList = () => {
   };
 
   return (
-    <div className="container-sm">
+    <div className="list-group mx-0 w-auto">
       {todos.map(({ text, selected }, i) => (
-        <div className="row" key={`row-${i}`}>
-          <div className="col">
-            <input
-              type="checkbox"
-              value={selected}
-              onChange={handleToggleSelection(i)}
-            />
-          </div>
-          <div className="col">{text}</div>
-          <div className="col">
-            <button
-              className="btn btn-primary"
-              onClick={() => console.log(`remove el item ${i}`)}
-            >
-              -
-            </button>
-          </div>
-        </div>
+        <label
+          className="list-group-item d-flex gap-2 align-items-center justify-content-between"
+          key={`row-${i}`}
+        >
+          <input
+            type="checkbox"
+            className="form-check-input flex-shrink-0"
+            value={selected}
+            onChange={handleToggleSelection(i)}
+          />
+          <span className="d-block">{text}</span>
+          <button
+            className="btn btn-close"
+            onClick={() => console.log(`remove el item ${i}`)}
+          ></button>
+        </label>
       ))}
     </div>
   );

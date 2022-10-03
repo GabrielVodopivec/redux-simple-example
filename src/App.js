@@ -2,10 +2,14 @@ import React from "react";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { TodoList } from "./components/TodoList";
-import "./bootstrap.min.css";
+import "./bootstrap.css";
+
 function App() {
   return (
-    <div className="container">
+    <div
+      className="container d-flex gap-2 flex-column justify-content-center"
+      style={{width: 600}}
+    >
       <Header />
       <TodoList />
       <Footer />

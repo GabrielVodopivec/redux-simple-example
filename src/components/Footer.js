@@ -22,16 +22,19 @@ export const Footer = () => {
   };
 
   return (
-    <div className="row">
-      <div className="input-group col">
-        <input
-          type="text"
-          value={text}
-          onKeyDown={handleKeyDown}
-          onChange={handleChangeText}
-        />
-        <button className="btn btn-primary" onClick={handleAddTask}>+</button>
-      </div>
+    <div className="input-group w-100 my-4">
+      <label className="input-group-text">Agregar</label>
+      <input
+        className="form-control"
+        type="text"
+        value={text}
+        placeholder="Nueva Tarea"
+        onKeyDown={handleKeyDown}
+        onChange={handleChangeText}
+      />
+      <button className="btn btn-primary" onClick={handleAddTask}>
+        +
+      </button>
     </div>
   );
 };

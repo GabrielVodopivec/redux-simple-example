@@ -29,13 +29,13 @@ export const todosReducer = (state, action) => {
       return { ...state, todos: updatedTodos };
     }
     case TOGGLE_SELECT_ALL: {
-      throw "Not implemented";
+      throw new Error("Not implemented");
     }
     case DELETE_ALL_SELECTED: {
-      throw "Not implemented";
+      throw new Error("Not implemented");
     }
     case DELETE: {
-      throw "Not implemented";
+      throw new Error("Not implemented");
     }
     default:
       return state;
